@@ -1,7 +1,7 @@
 """This Python source file contains the Python code used in the Jupyter notebook. NOTE: The interactive element does
 NOT work without the Jupyter notebook."""
 
-# 📦 Import Libraries
+# Import Libraries
 import pandas as pd
 from catboost import CatBoostRegressor
 from sklearn.model_selection import train_test_split
@@ -13,11 +13,11 @@ import numpy as np
 
 sns.set_theme(style='whitegrid')
 
-# 📁 Load and Prepare Data
+# Load and Prepare Data
 df = pd.read_csv("student_habits_performance.csv")
 df = df.drop(columns=['student_id'])  # Drop ID column
 
-# 🎯 Define Features and Target
+# Define Features and Target
 target_column = 'exam_score'
 x = df.drop(columns=[target_column])
 y = df[target_column]
@@ -32,7 +32,7 @@ categorical_columns = [
 # Fill NaNs in categorical columns
 x[categorical_columns] = x[categorical_columns].fillna('N/A')
 
-# 🧠 Train-Test Split & Train CatBoost Model
+# Train-Test Split & Train CatBoost Model
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 model = CatBoostRegressor(
@@ -45,7 +45,7 @@ model = CatBoostRegressor(
 
 model.fit(x_train, y_train)
 
-# 📊 Evaluate the Model's Accuracy
+# Evaluate the Model's Accuracy
 y_pred = model.predict(x_test)
 
 comparison_df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
@@ -56,7 +56,7 @@ print(comparison_df)
 print(f"\nMean Squared Error: {mse:.2f}")
 print(f"R² Score: {r2:.2f}")
 
-# 🥧 Feature Importance - Pie Chart (Top 7)
+# Feature Importance - Pie Chart (Top 7)
 feature_importance = model.get_feature_importance()
 feature_names = x.columns
 
@@ -81,7 +81,7 @@ plt.axis('equal')
 plt.tight_layout()
 plt.show()
 
-# 📉 Study Hours vs Exam Score Scatter Plot with Trend Line
+# Study Hours vs Exam Score Scatter Plot with Trend Line
 plt.figure(figsize=(8, 6))
 sns.regplot(x='study_hours_per_day', y='exam_score', data=df,
             scatter_kws={'alpha': 0.6}, line_kws={'color': 'red'})
@@ -92,7 +92,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# 🔍 Residual Plot for Prediction Error
+# Residual Plot for Prediction Error
 residuals = y_test - y_pred
 plt.figure(figsize=(8, 5))
 sns.histplot(residuals, kde=True, color='purple')
@@ -103,7 +103,7 @@ plt.tight_layout()
 plt.show()
 
 
-# 💡 UI Function for Making Predictions
+# UI Function for Making Predictions
 def predict_ui(age, gender, study_hours_per_day, social_media_hours, netflix_hours,
                part_time_job, attendance_percentage, sleep_hours, diet_quality,
                exercise_frequency, parental_education_level, internet_quality,
