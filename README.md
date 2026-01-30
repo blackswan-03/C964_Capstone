@@ -18,3 +18,4 @@ This program runs on a website known as mybinder. The steps to running the progr
   <img src="Figure%203.png">
   <img src="Figure%204.png">
   <img src="Figure%209.png">
+7. Use the sliders and multiple-choice textboxes to simulate behaviors for a student. Once you have satisfactorily fine-tuned your values, click on the button at the bottom that says "Run Interact". You should see text that says "Predicted Exam Score: (your predicted score here)". For example, a student with the following behavioral factors (age: 22; gender: Male; study_hours: 5.50; social_media_hours: 3.50; netflix_hours: 1.00; part_time_job: Yes; attendance: 90.30; sleep_hours: 7.00; diet_quality: Good; exercise_frequency: 4; parental_education: Bachelor; internet_quality: Good; mental_health_rating: 8; extracurriculars: No) should return "Predicted Exam Score: 95.48"
